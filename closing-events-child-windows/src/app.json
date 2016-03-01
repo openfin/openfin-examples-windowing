@@ -1,0 +1,19 @@
+{
+  "devtools_port": 9090,
+  "startup_app": {
+    "name": "closing events 1773",
+    "description": "OpenFin Closing Events",
+    "url": "http://localhost:5070",
+    "uuid": "openfin-closing-events-demo",
+    "autoShow": true
+  },
+  "runtime": {
+    "arguments": "",
+    "version": "beta"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "OpenFin closing-events Demo",
+    "name": "OpenFin closing-events Demo"
+  }
+}

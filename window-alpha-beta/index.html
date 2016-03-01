@@ -1,0 +1,36 @@
+<html>
+<head>
+  <link rel="import" href="fin-hypergrid.min.html">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+	<div class="winctrl drag">
+    <button type="button" name="fullscreen_btt" id="fullscreen_btt">Fullscreen on </button>
+    <button type="button" name="fullscreen_off_btt" id = "fullscreen_off_btt">Fullscreen off</button>
+
+		<h2>Demo Alpla Mask</h2>
+		<p>
+			This div can be dragged. The gray portion of the generated Hypergrids is the handle to drag. The "X" removes the
+			ladder from the dom. Being a POC, little consideration was given
+			for UX so far...
+		</p>
+		<p>
+			Generate 200 Hypergrids (some off-screen)
+			<button id="mk-wind">Make Windows</button>
+		</p>
+		<span id="close">close app</span>
+	</div>
+
+	<div class="ladder drag" style="display:none">
+		<span class="ladder-num"></span>
+		<span class="close">X</span>
+
+		<div class="l-body">
+		<fin-hypergrid><fin-hypergrid-behavior-json></fin-hypergrid-behavior-json></fin-hypergrid>
+		</div>
+	</div>
+
+	<script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "devtools_port": 9060,
+  "startup_app": {
+    "name": "OpenFin window docking",
+    "description": "Openfin window docking demo",
+    "url": "http://localhost:9077",
+    "uuid": "openfin-window-docking-demo",
+    "autoShow": true
+  },
+  "runtime": {
+    "arguments": "",
+    "version": "beta"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "OpenFin window docking",
+    "name": "OpenFin window docking"
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "OpenfinPOC window transparency",
+        "description": "OpenFin OpenfinPOC window transparency POC",
+        "url": "http://localhost:8080/",
+        "__url": "http://cdn.openfin.co/demos/alpha-mask/",
+        "uuid": "o",
+        "autoShow": true,
+        "frame": false,
+        "alphaMask": {
+            "red": 200,
+            "green": 200,
+            "blue": 200
+        },
+        "installerUrl": "https://dl.openfin.co/services/download?fileName=alpha-mask-poc&config=http://cdn.openfin.co/demos/alpha-mask/app.json"
+    },
+    "runtime": {
+        "arguments": "--v=1 -disable-legacy-window  --disable-gpu",
+        "version": "4.40.3.19"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Transparent OpenFin",
+        "icon": "http://demoappdirectory.openf.in/desktop/config/apps/OpenFin/HelloOpenFin/img/openfin.ico",
+        "name": "Alpha Mask"
+    }
+}

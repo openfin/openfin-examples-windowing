@@ -1,0 +1,29 @@
+{
+  "devtools_port": 9090,
+  "startup_app": {
+    "name": "OpenFin 1819 Define Draggable",
+    "description": "Define draggable event listener issues",
+    "url": "http://localhost:9070",
+    "uuid": "openfin-define-draggable-demo",
+    "autoShow": true,
+    "frame": false
+
+  },
+  "runtime": {
+    "arguments": "",
+    "version": "beta"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "OpenFin 1819 Define Draggable",
+    "name": "OpenFin 1819 Define Draggable"
+  },
+  "dialogSettings" : {
+    "logo" : "https://openfin.co/wp-content/uploads/2014/11/logo.png",
+    "bgColor" : 4163183909,
+    "textColor" : 4293980400,
+    "progressBarBgColor" : 4278190080,
+    "progressBarFillColor" : 4281513430,
+    "progressBarBorderColor" : 4282137660
+  }
+}

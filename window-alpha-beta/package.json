@@ -1,0 +1,25 @@
+{
+  "name": "many-windows",
+  "version": "1.0.0",
+  "description": "Window transparency in OpenFin",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datamadic/many-windows.git"
+  },
+  "keywords": [
+    "OpenFin"
+  ],
+  "author": "Graham Clapham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/datamadic/many-windows/issues"
+  },
+  "homepage": "https://github.com/datamadic/many-windows#readme"
+}
