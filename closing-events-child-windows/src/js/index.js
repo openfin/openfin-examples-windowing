@@ -1,4 +1,4 @@
-var _mainWindow, _messageWindow;
+var _mainWindow, _messageWindow, _applications = [], _appUUID = 0;
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
@@ -32,6 +32,7 @@ initWithOpenFin = function(){
     });
 
     initButtonListeners();
+    // This is just a utility function to allow the url in the app to open in a browser.
     initExternalURLs();
 };
 
@@ -59,9 +60,23 @@ initButtonListeners = function(){
     });
 
     document.querySelector('#addWin').addEventListener("click", function(e){
-        var _ext = new ExternalWindow();
-        listWindows()
+        var win = new ExternalWindow().then(function(win){
+            console.log(win);
+        });
+        listWindows();
     });
+
+
+
+    document.querySelector('#addApp').addEventListener("click", function(e){
+        _appUUID ++;
+
+        initNewApp("APP_"+_appUUID).then(function(app){
+            _applications.push(app);
+        });
+    });
+
+    document.querySelector('#')
 };
 
 listWindows = function(){

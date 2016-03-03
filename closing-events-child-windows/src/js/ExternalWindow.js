@@ -14,7 +14,8 @@ var _generateRandomName = function(){
 
 
 ExternalWindow = function(){
-    this._window_config = {
+
+   var _window_config = {
         alwaysOnTop: false,
         autoShow: true,
         cornerRounding: {
@@ -52,21 +53,29 @@ ExternalWindow = function(){
         /* state: A string that sets the window to be "minimized", "maximized", or "normal" on creation. Default: "normal" */
         state:"normal",
         /* The URL of the window. Default: "about:blank" */
-        url: "about:blank"
-    };
-    var _initCallback = function(){
-        console.log("Initialisation suceeded.")
-    };
-    var _onIntFail = function(){
-        console.log("Initialisation failed.")
+        url: "http://localhost:5070/childwindow.html"
     };
 
     var _this = this;
-    try{
-        fin.desktop.main(function(){
-            _this._window = new fin.desktop.Window(_this._window_config,_initCallback,_onIntFail);
-        })
-    }catch(err){
-        console.log("Error: ", err);
-    }
+
+
+    return new Promise(function(resolve, reject){
+        var _initCallback = function(){
+            console.log("Initialisation suceeded.")
+            resolve(this);
+        };
+        var _onIntFail = function(){
+            console.log("Initialisation failed.")
+        };
+
+        try{
+            fin.desktop.main(function(){
+                _this._window = new fin.desktop.Window(_window_config,_initCallback,_onIntFail);
+            })
+        }catch(err){
+            console.log("Error: ", err);
+            reject(err)
+        }
+
+    });
 };
