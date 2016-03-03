@@ -1,4 +1,4 @@
-var _dragArea;
+var _dragArea, _current;
 
 document.addEventListener("DOMContentLoaded", function(){
    init();
@@ -16,9 +16,9 @@ function init(){
 };
 
 function initWithOpenFin(){
-  console.log("OpenFin is available. ");
   _dragArea = document.querySelector("#dragger");
-  fin.desktop.Window.getCurrent().defineDraggableArea(_dragArea);
+    _current = fin.desktop.Window.getCurrent();
+    _current.defineDraggableArea(_dragArea);
     fin.desktop.System.getMonitorInfo(function (monitorInfo) {
         console.log("This object contains information about all monitors: ", monitorInfo);
     });
@@ -28,6 +28,9 @@ function initWithOpenFin(){
 }
 
 function initDomEventListeners(){
+    document.querySelector("#closer").addEventListener('click', function(){
+        _current.close()
+    });
 [].slice.call(document.querySelectorAll(".listened")).map(function(d,i){
     d.addEventListener('mouseover', function(e){
         console.log("MOUSE OVER --- ")
