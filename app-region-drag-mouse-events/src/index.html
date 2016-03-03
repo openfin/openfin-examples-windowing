@@ -10,13 +10,22 @@
 </div>
 <div id="main">
 
-  <div class="listened fixed-pos-container" >
-      <div class="listened" id="closer">X</div>
+  <div class="fixed-pos-container" >
+      <div class="listened" id="closer">I am nested in a 'no-drag' element so receive mouseleave events.</div>
   </div>
   <div class="listened">I will turn blue when I receive a mouseleave Event</div>
   <div class="listened">I will turn blue when I receive a mouseleave Event</div>
   <div class="listened">I will turn blue when I receive a mouseleave Event</div>
   <div class="listened">I will turn blue when I receive a mouseleave Event</div>
+</div>
+<div id="copy">
+    <h3>Draggable areas and mouse Events</h3>
+    <p>The purpose of this example is to show how setting a draggable area on a frameless window will affect mouse Events for nested and overlapping elements.</p>
+    <p>The following command: <pre>fin.desktop.Window.getCurrent().defineDraggableArea(document.getElementById('toolbar'));</pre><br />will set the app's draggable area to the DOM element with an id of 'toolbar' and adds the CSS property of <pre>-webkit-app-region: drag;</pre></p>
+    <p>This CSS property prevents some of the standard mouse Events firing.</p>
+    <p>The initial state of the DOM Elements with mouse listeners is orange and they have the CSS property '-webkit-app-region: no-drag;' to allow them to receive mouse Events, even when nested in a 'drag' region . When they receive a 'mouseover' they turn red and a 'mouseleave' turns them blue.</p>
+    <p>You will see that dragging the mouse to any of the orange elements highlights them in red, including the top-left div, nested in the draggable top-bar. If, however, the mouse leaves the nested element via the grey, draggable, top bar the 'mouseleave' Event will be prevented and the element will not turn blue.</p>
+    <p>We counter this on the top right element by nesting it within a DIV with its CSS set to '-webkit-app-region: no-drag;' and padding of 4px. When the mouse leaves the orange DIV it must pass over the 4px border of the 'no-drag' region, thus allowing a mouse Event to be dispatched before it enters the mouse-event-cancelling 'drag' zone.</p>
 </div>
 </body>
 </html>

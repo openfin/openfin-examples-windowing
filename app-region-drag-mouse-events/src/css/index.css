@@ -1,6 +1,6 @@
 body{
     font-family: sans-serif;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 #dragger{
@@ -14,10 +14,25 @@ body{
     height: 30px;
     padding: 4px;
     margin: 4px;
-    background-color: #cccccc;
+    background-color: #ff9e24;
     -webkit-app-region: no-drag !important;
 }
+.listened p {
+   margin:0;
+    padding:0;
+}
 
+#closer{
+   width:180px !important;
+}
+#copy{
+    width:550px;
+    position: absolute;
+    top: 72px;
+    left:225px;
+    background-color: #e6e6e6;
+    padding: 8px;
+}
 .fixed-pos{
     position: absolute;
     top:30px;
@@ -27,8 +42,10 @@ body{
     background-color: #252525;
     position: absolute;
     top:10px;
-    left: 500px;
+    right: 10px;
     height: 46px;
+    line-height: 16px;
+    -webkit-app-region: no-drag !important;
 }
 
 .mouseleave{
@@ -36,4 +53,13 @@ body{
 }
 .mouseover{
     background-color: #ff0000;
+}
+pre{
+    color: #13a09a;
+    display: inline;
+}
+
+p, pre{
+    line-height: 16px;
+
 }
