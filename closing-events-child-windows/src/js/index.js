@@ -23,7 +23,7 @@ initWithOpenFin = function(){
     OpenFinEventListeners.addAllEventListeners(_mainWindow);
     //OpenFinEventListeners.listen("close-requested", closeRequestedCallback);
     _mainWindow.addEventListener('close-requested', function(e) {
-        var challenge = confirm('are you sure?');
+        var challenge = confirm('are you sure? This will close all the child windows.');
         if (challenge == true) {
             _mainWindow.close(true);
         }else{
