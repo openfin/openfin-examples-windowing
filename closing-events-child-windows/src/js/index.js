@@ -1,4 +1,10 @@
-var _mainWindow, _messageWindow, _applications = [], _appUUID = 0;
+var _mainWindow
+    , _messageWindow
+    , _applications = []
+    , _appUUID = 0
+    , winDisplay
+    , appDisplay
+    , appList = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
@@ -16,12 +22,14 @@ init = function(){
 };
 
 initWithOpenFin = function(){
-    printMessage("We have OpenFin available.")
+    printMessage("We have OpenFin available.");
+    winDisplay = document.querySelector("#win-display");
+    appDisplay = document.querySelector("#app-display");
     if (!_mainWindow){
         _mainWindow = fin.desktop.Window.getCurrent()
     };
     OpenFinEventListeners.addAllEventListeners(_mainWindow);
-    //OpenFinEventListeners.listen("close-requested", closeRequestedCallback);
+    listAllApplications();
     _mainWindow.addEventListener('close-requested', function(e) {
         var challenge = confirm('are you sure? This will close all the child windows.');
         if (challenge == true) {
@@ -47,14 +55,6 @@ initButtonListeners = function(){
         closeMainWindow();
     });
 
-    //document.querySelector('#removeAllListeners').addEventListener("click", function(e){
-    //    OpenFinEventListeners.removeAllEvemtListeners(_mainWindow);
-    //});
-
-    //document.querySelector('#removeBoundsChanged').addEventListener("click", function(e){
-    //    OpenFinEventListeners.removeListenerByName(_mainWindow, "bounds-changed");
-    //});
-
     document.querySelector('#listWindows').addEventListener("click", function(e){
         listWindows()
     });
@@ -70,13 +70,12 @@ initButtonListeners = function(){
 
     document.querySelector('#addApp').addEventListener("click", function(e){
         _appUUID ++;
-
+        console.log("Creating app -- ", _appUUID )
         initNewApp("APP_"+_appUUID).then(function(app){
             _applications.push(app);
+            listAllApplications()
         });
     });
-
-    document.querySelector('#')
 };
 
 listWindows = function(){
@@ -90,7 +89,54 @@ listWindows = function(){
         console.log("_list")
         printMessage(_list)
     });
+
+    listAllApplications()
 };
+
+getAllApplications = function(){
+    return new Promise(function(resolve, reject){
+        fin.desktop.System.getAllApplications(function(applicationInfoList) {
+            resolve(applicationInfoList);
+        });
+    });
+};
+
+listAllApplications = function(){
+    appList.map(function(d,i){
+        try{
+            d.destroy()
+        }catch(e){
+            console.log(e)
+        }
+    });
+    appList = [];
+    getAllApplications().then(function(allApps){
+        allApps.forEach(function (app) {
+            console.log("Showing information for application with uuid: "
+                + app.uuid);
+            console.log("isRunning: ", app.isRunning);
+            var data = {app: app, "uuid": app.uuid, type: "app", "running":app.isRunning}
+            var _dis = iconFactory(data);
+            winDisplay.appendChild(_dis.dom);
+            appList.push(_dis)
+        });
+    });
+};
+
+iconFactory = function(data){
+
+    var _destroy = function(){
+        this.parentElement.removeChild(this);
+    };
+
+    var _dom = document.createElement("div");
+    _dom.className               = "window-icon";
+    _dom.style.backgroundColor   = data.running ? '#ff00ff' : '#00ffff';
+    var _text = document.createTextNode(data.uuid);
+    _dom.appendChild(_text);
+    return {dom:_dom, destroy:_destroy.bind(_dom)}
+};
+
 
 closeRequestedCallback = function(evt){
     console.log("Close Requested Callback ", evt);

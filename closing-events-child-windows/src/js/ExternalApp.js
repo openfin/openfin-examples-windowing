@@ -1,5 +1,6 @@
 // Due to the asynchronous nature of the
 function initNewApp(uuid){
+    console.log("initNewApp called -- ", uuid);
     return new Promise(function(resolve, reject){
         var SpawnedApplication = new fin.desktop.Application({
             name: "A New OpenFinApp",
