@@ -8,9 +8,11 @@
 <body>
 <div class="content container">
     <div class="row">
-        <div class="col-md-12 controls">
+        <div class="col-md-6 controls">
             <h1>OpenFin Windowing</h1>
-
+        </div>
+        <div class="col-md-6 controls">
+            <p id="message"></p>
         </div>
     </div>
 
@@ -42,7 +44,19 @@
 
 
         <div class="col-md-3">
-            <p id="message"></p>
+            <p>Apps and Windows behave in very different ways.</p>
+            <h5>Apps</h5>
+            <p>Apps, if created programmatically, are independent of the app which created them.
+                It is possible to retrieve a list of the running apps, this does not, however,
+                return the actual Application as Objects with access to their methods but an Object containing the uuid and a boolean 'isRunning'
+                to tell if the Application is currently running.
+                </p>
+            <h5>Windows</h5>
+            <p>When a window is created programmatically we have access to the Window Object.</p>
+            <p></p>
+
+        </div>
+        <div class="col-md-3">
             <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-window.addEventListener.html">addEventListener</a><br />
                 for documentation on EventListeners.
             </p>
@@ -51,7 +65,10 @@
                 for documentation on ChildWindows.
             </p>
         </div>
-    </div>
+
+
+
+        </div>
 
 
 

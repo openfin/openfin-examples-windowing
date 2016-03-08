@@ -63,6 +63,15 @@ initButtonListeners = function(){
     document.querySelector('#addWin').addEventListener("click", function(e){
         var win = new ExternalWindow().then(function(win){
             console.log(win);
+            win.addEventListener("close-requested", function() {
+                win.close(true, function(){
+                    console.log("THE WINDOW SHOULD HAVE CLOSED ");
+                    updateLists();
+                }, function(err){
+                    console.log("THE WINDOW CLOSE ERRORED :  ",err);
+
+                });
+            });
             updateLists();
         });
     });
@@ -108,7 +117,11 @@ listAllApplications = function(){
             var data = {app: app, "uuid": app.uuid, type: "app", "running":app.isRunning}
             var _dis = iconFactory(data);
             appDisplay.appendChild(_dis.dom);
-            appList.push(_dis)
+            _dis.dom.style.opacity = 1;
+            appList.push(_dis);
+            setTimeout(function(){
+                _dis.dom.style.opacity = 1;
+            }, 10);
         });
     });
 };
@@ -118,7 +131,6 @@ listAllApplications = function(){
 // Getting child Windows is a method of the fin.desktop.Application class
 
 listAllWindows = function(){
-    console.log("------ listAllWindows CALLED  ")
     winList.map(function(d,i){
         try{
             d.destroy()
@@ -129,10 +141,21 @@ listAllWindows = function(){
     winList = [];
     fin.desktop.Application.getCurrent().getChildWindows(function (children) {
         children.forEach(function (childWindow) {
+            childWindow.getState(function(e){
+                console.log("THE STATE IS  ", e)
+            });
+
+            //          _dom.className   = data.running ? "window-icon running" :"window-icon not-running" ;
+
             var data = {window:childWindow};
             var _win = iconFactory(data);
             winDisplay.appendChild(_win.dom);
-            winList.push(_win)
+            winList.push(_win);
+
+            setTimeout(function(){
+                _win.dom.style.opacity = 1;
+            }, 10);
+
         });
     });
 };
@@ -163,11 +186,11 @@ iconFactory = function(data){
     }
 
     if(_window){
+        // console.log(">>>>>>>>>>>>>>>>> _window ",_window);
         _dom.className = "window-icon";
         var _text = document.createTextNode(data.window.name);
         _dom.appendChild(_text);
         _dom.addEventListener('click', function(){
-            console.log("WINDOW: ",data.window);
             data.window.bringToFront()
         });
     }

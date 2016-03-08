@@ -1,10 +1,15 @@
 body{
     background-color: #24282d;
     font-family: 'Roboto', sans-serif;
+    font-size: 11px;
 }
 h1{
     font-weight: 100;
     color: #0095dd;
+}
+h5{
+    color: #0095dd;
+    font-weight: 800;
 }
 
 .content{
@@ -50,6 +55,10 @@ a:hovered{
     height: 35px;
     background-color: #212121;
     margin:  1px 0px;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+    opacity: 0.1;
 }
 
 p.header{
