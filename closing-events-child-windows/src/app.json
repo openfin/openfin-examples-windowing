@@ -5,11 +5,23 @@
     "description": "OpenFin Closing Events",
     "url": "http://localhost:5070",
     "uuid": "openfin-closing-events-demo",
-    "autoShow": true
+    "autoShow": true,
+    "defaultWidth": 1000,
+    "maxWidth": 1000,
+    "minWidth": 1000,
+
+    "maxHeight": 900,
+    "defaultHeight": 900,
+    "minHeight": 900,
+
+    "defaultTop": 50,
+    "defaultLeft": 50,
+    "resizable": false,
+    "maximizable": false
   },
   "runtime": {
     "arguments": "",
-    "version": "beta"
+    "version": "stable"
   },
   "shortcut": {
     "company": "OpenFin",

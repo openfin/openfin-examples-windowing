@@ -4,7 +4,8 @@ var _mainWindow
     , _appUUID = 0
     , winDisplay
     , appDisplay
-    , appList = [];
+    , appList = []
+    , winList = [];
 
 document.addEventListener('DOMContentLoaded', function() {
     init();
@@ -29,7 +30,7 @@ initWithOpenFin = function(){
         _mainWindow = fin.desktop.Window.getCurrent()
     };
     OpenFinEventListeners.addAllEventListeners(_mainWindow);
-    listAllApplications();
+    updateLists();
     _mainWindow.addEventListener('close-requested', function(e) {
         var challenge = confirm('are you sure? This will close all the child windows.');
         if (challenge == true) {
@@ -46,53 +47,45 @@ initWithOpenFin = function(){
 
 printMessage = function(message){
     if(_messageWindow){
-        _messageWindow.innerHTML = message
+        _messageWindow.innerHTML = message;
     }
 };
-
+//
 initButtonListeners = function(){
     document.querySelector("#closeButton").addEventListener('click', function(e){
         closeMainWindow();
     });
 
-    document.querySelector('#listWindows').addEventListener("click", function(e){
-        listWindows()
-    });
+    //document.querySelector('#listWindows').addEventListener("click", function(e){
+    //    listAllWindows()
+    //});
 
     document.querySelector('#addWin').addEventListener("click", function(e){
         var win = new ExternalWindow().then(function(win){
             console.log(win);
+            updateLists();
         });
-        listWindows();
     });
-
-
 
     document.querySelector('#addApp').addEventListener("click", function(e){
         _appUUID ++;
-        console.log("Creating app -- ", _appUUID )
         initNewApp("APP_"+_appUUID).then(function(app){
+            app.addEventListener('closed', function(event){
+                updateLists()
+            });
             _applications.push(app);
             listAllApplications()
         });
     });
 };
 
-listWindows = function(){
-    var _list = "__"
-    fin.desktop.Application.getCurrent().getChildWindows(function (children) {
-        _list += fin.desktop.Application.getCurrent().window.name +"<br>";
-        children.forEach(function (childWindow) {
-            _list += "Showing child: " + childWindow.name +"<br>";
-            childWindow.show();
-        });
-        console.log("_list")
-        printMessage(_list)
-    });
-
-    listAllApplications()
+updateLists = function(){
+    listAllApplications();
+    listAllWindows();
 };
 
+// APPLICATIONS:
+// getAllApplications is a method of the fin.desktop.System class
 getAllApplications = function(){
     return new Promise(function(resolve, reject){
         fin.desktop.System.getAllApplications(function(applicationInfoList) {
@@ -112,37 +105,82 @@ listAllApplications = function(){
     appList = [];
     getAllApplications().then(function(allApps){
         allApps.forEach(function (app) {
-            console.log("Showing information for application with uuid: "
-                + app.uuid);
-            console.log("isRunning: ", app.isRunning);
             var data = {app: app, "uuid": app.uuid, type: "app", "running":app.isRunning}
             var _dis = iconFactory(data);
-            winDisplay.appendChild(_dis.dom);
+            appDisplay.appendChild(_dis.dom);
             appList.push(_dis)
         });
     });
 };
 
+
+// WINDOWS:
+// Getting child Windows is a method of the fin.desktop.Application class
+
+listAllWindows = function(){
+    console.log("------ listAllWindows CALLED  ")
+    winList.map(function(d,i){
+        try{
+            d.destroy()
+        }catch(e){
+            console.log(e)
+        }
+    });
+    winList = [];
+    fin.desktop.Application.getCurrent().getChildWindows(function (children) {
+        children.forEach(function (childWindow) {
+            var data = {window:childWindow};
+            var _win = iconFactory(data);
+            winDisplay.appendChild(_win.dom);
+            winList.push(_win)
+        });
+    });
+};
+
+//----
 iconFactory = function(data){
+    var _app, _window;
+    if(data.app) _app = data.app;
+    if(data.window) _window = data.window;
 
     var _destroy = function(){
-        this.parentElement.removeChild(this);
+        try {
+            this.parentElement.removeChild(this);
+        }catch(err){
+            //--
+        }
     };
 
     var _dom = document.createElement("div");
-    _dom.className               = "window-icon";
-    _dom.style.backgroundColor   = data.running ? '#ff00ff' : '#00ffff';
-    var _text = document.createTextNode(data.uuid);
-    _dom.appendChild(_text);
+
+    if(_app){
+        _dom.className   = data.running ? "window-icon running" :"window-icon not-running" ;
+        var _text = document.createTextNode(data.uuid);
+        _dom.appendChild(_text);
+        _dom.addEventListener('click', function(){
+            console.log("App : ",_app );
+        });
+    }
+
+    if(_window){
+        _dom.className = "window-icon";
+        var _text = document.createTextNode(data.window.name);
+        _dom.appendChild(_text);
+        _dom.addEventListener('click', function(){
+            console.log("WINDOW: ",data.window);
+            data.window.bringToFront()
+        });
+    }
+
     return {dom:_dom, destroy:_destroy.bind(_dom)}
 };
 
-
+///---------
 closeRequestedCallback = function(evt){
     console.log("Close Requested Callback ", evt);
     delayForceCloseWindow(_mainWindow);
 };
-
+//-----
 closeMainWindow = function(){
     _mainWindow.close(false,
         function(){

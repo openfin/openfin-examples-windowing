@@ -61,7 +61,11 @@ ExternalWindow = function(){
 
     return new Promise(function(resolve, reject){
         var _initCallback = function(){
-            console.log("Initialisation suceeded.")
+            console.log("Initialisation succeeded.", this.getNativeWindow().document.querySelector("#title-display"));
+            //
+            this.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
+            //document.querySelector("#title-display").innerHTML('</H2>LOADED</H2>');
+
             resolve(this);
         };
         var _onIntFail = function(){

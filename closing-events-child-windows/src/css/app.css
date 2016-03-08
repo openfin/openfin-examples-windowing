@@ -1,11 +1,24 @@
 body{
     background-color: #24282d;
+    font-family: 'Roboto', sans-serif;
+}
+h1{
+    font-weight: 100;
+    color: #0095dd;
 }
 
 .content{
-    display: block;
-    padding: 20px;
     color: #e6e6e6;
+}
+
+.controls{
+    margin:20px 0;
+}
+
+.btn-default{
+    background-color: #0095dd;
+    color: #7ffaff;
+    border:1px solid black;
 }
 
 button{
@@ -21,16 +34,42 @@ a:hovered{
 }
 
 .display{
-    width:100%;
-    height:60px;
-    background-color: #7ffaff;
+    width:200px;
+    height:360px;
+    background-color: #373737;
     margin-bottom: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
+
 .window-icon{
-    width: 60px;
-    height: 100px;
-    background-color: #000088;
-    float: left;
-    margin: 0 3px;
+    font-size: 11px;
+    padding: 8px;
+    width: 200px;
+    height: 35px;
+    background-color: #212121;
+    margin:  1px 0px;
+}
+
+p.header{
+    padding: 8px;
+    color: #7ffaff;
+}
+
+.running{
+    color: #00ff00;
+}
+
+.not-running{
+    color: #ff0000;
+
+}
+.window{
+    background-color: #7ffaff;
+    color: #111111;
+}
+#title-display{
+font-weight: 800;
+    color: #21528b;
 }

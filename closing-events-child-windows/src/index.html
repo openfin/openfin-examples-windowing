@@ -1,26 +1,67 @@
 <html>
 <head></head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <link rel="stylesheet" href="http://localhost:5070/css/app.css">
 
 <body>
-<div class="content">
-   <button id = "closeButton">Close</button>
-   <!--<button id = "removeAllListeners">Remove All Listeners</button>-->
-   <!--<button id = "removeBoundsChanged">Remove Bounds Changed Listener</button>-->
-   <button id = "listWindows">List Windows</button>
-   <button id = "addWin">Add Window</button>
-   <button id = "addApp">Add Application</button>
-    <p id="message"></p>
-    <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-window.addEventListener.html">http://cdn.openfin.co/jsdocs/stable/tutorial-window.addEventListener.html</a><br />
-    for documentation on EventListeners.
-    </p>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-12 controls">
+            <h1>OpenFin Windowing</h1>
 
-    <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-application.getChildWindows.html">http://cdn.openfin.co/jsdocs/stable/tutorial-application.getChildWindows.html</a><br />
-        for documentation on ChildWindows.
-    </p>
-    <div id = "win-display" class="display window-display"></div>
-    <div id = "app-display" class="display app-display"></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-12 controls">
+
+            <button class="btn btn-default" id = "closeButton">Close</button>
+            <!--<button id = "removeAllListeners">Remove All Listeners</button>-->
+            <!--<button id = "removeBoundsChanged">Remove Bounds Changed Listener</button>-->
+            <!--<button id = "listWindows">List Windows</button>-->
+            <button class="btn btn-default" id = "addWin">Add Window</button>
+            <button  class="btn btn-default" id = "addApp">Add Application</button>
+
+        </div>
+
+        <div class="col-md-3">
+            <div id = "win-display" class="display window-display">
+                <p class="header">Windows</p>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div id = "app-display" class="display app-display">
+                <p class="header">Apps</p>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <p id="message"></p>
+            <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-window.addEventListener.html">addEventListener</a><br />
+                for documentation on EventListeners.
+            </p>
+
+            <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-application.getChildWindows.html">getChildWindows</a><br />
+                for documentation on ChildWindows.
+            </p>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
 </div>
 </body>
 </html>
