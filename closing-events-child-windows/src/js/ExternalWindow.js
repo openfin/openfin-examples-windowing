@@ -22,10 +22,10 @@ ExternalWindow = function(){
             width: 25,
             height: 30
         },
-        defaultCentered:true,
+        defaultCentered:false,
         defaultHeight:300,
         defaultLeft: (Math.random() * 500),
-        defaultTop:100,
+        defaultTop:(Math.random() * 500),
         defaultWidth:400,
         frame:true,
         hideOnClose: false,
@@ -61,11 +61,7 @@ ExternalWindow = function(){
 
     return new Promise(function(resolve, reject){
         var _initCallback = function(){
-            console.log("Initialisation succeeded.", this.getNativeWindow().document.querySelector("#title-display"));
-            //
             this.getNativeWindow().document.querySelector("#title-display").innerHTML ='</H2>'+_window_config.name+'</H2>';
-            //document.querySelector("#title-display").innerHTML('</H2>LOADED</H2>');
-
             resolve(this);
         };
         var _onIntFail = function(){

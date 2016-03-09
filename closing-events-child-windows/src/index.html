@@ -13,22 +13,14 @@
         </div>
         <div class="col-md-6 controls">
             <p id="message"></p>
+            <button class="btn btn-default" id = "closeButton">Close</button>
+            <button class="btn btn-default" id = "addWin">Add Window</button>
+            <button  class="btn btn-default" id = "addApp">Add Application</button>
         </div>
     </div>
 
 
     <div class="row">
-
-        <div class="col-md-12 controls">
-
-            <button class="btn btn-default" id = "closeButton">Close</button>
-            <!--<button id = "removeAllListeners">Remove All Listeners</button>-->
-            <!--<button id = "removeBoundsChanged">Remove Bounds Changed Listener</button>-->
-            <!--<button id = "listWindows">List Windows</button>-->
-            <button class="btn btn-default" id = "addWin">Add Window</button>
-            <button  class="btn btn-default" id = "addApp">Add Application</button>
-
-        </div>
 
         <div class="col-md-3">
             <div id = "win-display" class="display window-display">
@@ -43,32 +35,50 @@
         </div>
 
 
-        <div class="col-md-3">
+        <div class="col-md-6">
             <p>Apps and Windows behave in very different ways.</p>
             <h5>Apps</h5>
-            <p>Apps, if created programmatically, are independent of the app which created them.
+            <p>Apps, even if created programmatically, are independent of the app which created them.
                 It is possible to retrieve a list of the running apps, this does not, however,
-                return the actual Application as Objects with access to their methods but an Object containing the uuid and a boolean 'isRunning'
+                return the actual Application as Objects, with access to their methods, but an Object containing the uuid and a boolean 'isRunning'
                 to tell if the Application is currently running.
-                </p>
+            </p>
+            <p>To communicate with an App you must do so via the InterApplicationBus. see: <a href="http://cdn.openfin.co/jsdocs/stable/fin.desktop.module_InterApplicationBus.html">http://cdn.openfin.co/jsdocs/stable/fin.desktop.module_InterApplicationBus.html</a></p>
             <h5>Windows</h5>
-            <p>When a window is created programmatically we have access to the Window Object.</p>
-            <p></p>
-
-        </div>
-        <div class="col-md-3">
-            <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-window.addEventListener.html">addEventListener</a><br />
-                for documentation on EventListeners.
-            </p>
-
+            <p>When a window is created programmatically the parent application has access to the Window Object – either via the Object returned in the constructor callback.</p>
+            <p>Instantiating the window as shown below...</p>
+            <pre>var _window = new fin.desktop.Window(config_object,successCallback,failCallback);</pre>
+            <p>...then retrieving the Object in the success callback...</p>
+            <pre>var successCallback = function(){
+                     console.log(this)
+                     //'this' is the newly created Window object
+                }</pre>
+            <p>Or, alternatively, using the 'getChildWindows()' method.</p>
+            <pre>var _app = fin.desktop.Application.getCurrent();
+  _app.getChildWindows(function(children){
+  console.log(children)
+}</pre>
+            <div class="col-md-4">
+                <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-window.addEventListener.html">addEventListener</a><br />
+                    for documentation on EventListeners.
+                </p>
+                </div>
+            <div class="col-md-4">
             <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-application.getChildWindows.html">getChildWindows</a><br />
-                for documentation on ChildWindows.
-            </p>
+                    for documentation on getChildWindows.
+                </p>
+                </div>
+            <div class="col-md-4">
+
+            <p>See: <a href="http://cdn.openfin.co/jsdocs/stable/tutorial-system.getAllApplications.html">getAllApplications</a><br />
+                    for documentation on getAllApplications.
+                </p>
+            </div>
+
+
         </div>
 
-
-
-        </div>
+    </div>
 
 
 

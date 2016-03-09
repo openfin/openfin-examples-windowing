@@ -11,33 +11,26 @@ h5{
     color: #0095dd;
     font-weight: 800;
 }
-
 .content{
     color: #e6e6e6;
 }
-
 .controls{
     margin:20px 0;
 }
-
-.btn-default{
+.btn-default, .btn-default:active, .btn-default:active, {
     background-color: #0095dd;
     color: #7ffaff;
     border:1px solid black;
 }
-
-button{
+.btn-default{
     color: #252525;
 }
-
 a{
     color: #7ffaff;
 }
-
 a:hovered{
     color: #13a09a;
 }
-
 .display{
     width:200px;
     height:360px;
@@ -46,8 +39,6 @@ a:hovered{
     overflow-x: hidden;
     overflow-y: auto;
 }
-
-
 .window-icon{
     font-size: 11px;
     padding: 8px;
@@ -60,25 +51,24 @@ a:hovered{
     -webkit-transition: opacity .25s ease-in-out;
     opacity: 0.1;
 }
-
 p.header{
     padding: 8px;
     color: #7ffaff;
 }
-
 .running{
     color: #00ff00;
 }
-
 .not-running{
     color: #ff0000;
-
 }
 .window{
     background-color: #7ffaff;
     color: #111111;
 }
 #title-display{
-font-weight: 800;
+    font-weight: 800;
     color: #21528b;
+}
+pre{
+    font-size: 11px;
 }

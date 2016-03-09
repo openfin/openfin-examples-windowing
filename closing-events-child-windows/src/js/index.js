@@ -141,9 +141,9 @@ listAllWindows = function(){
     winList = [];
     fin.desktop.Application.getCurrent().getChildWindows(function (children) {
         children.forEach(function (childWindow) {
-            childWindow.getState(function(e){
-                console.log("THE STATE IS  ", e)
-            });
+
+            console.log(childWindow);
+
 
             //          _dom.className   = data.running ? "window-icon running" :"window-icon not-running" ;
 
