@@ -6,12 +6,24 @@
     "url": "http://localhost:9070",
     "uuid": "openfin-define-draggable-demo",
     "autoShow": true,
+    "defaultWidth": 1000,
+    "maxWidth": 1000,
+    "minWidth": 1000,
+
+    "maxHeight": 900,
+    "defaultHeight": 900,
+    "minHeight": 900,
+
+    "defaultTop": 50,
+    "defaultLeft": 50,
+    "resizable": false,
+    "maximizable": false,
     "frame": false
 
   },
   "runtime": {
     "arguments": "",
-    "version": "beta"
+    "version": "stable"
   },
   "shortcut": {
     "company": "OpenFin",

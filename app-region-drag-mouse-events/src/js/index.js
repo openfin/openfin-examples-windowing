@@ -16,15 +16,14 @@ function init(){
 };
 
 function initWithOpenFin(){
-  _dragArea = document.querySelector("#dragger");
-    _current = fin.desktop.Window.getCurrent();
-    _current.defineDraggableArea(_dragArea);
-    fin.desktop.System.getMonitorInfo(function (monitorInfo) {
-        console.log("This object contains information about all monitors: ", monitorInfo);
-    });
     initDomEventListeners();
-    initDragEventListener();
-    initExternalWindow();
+   // initDragEventListener();
+    //initExternalWindow();
+        _dragArea = document.querySelector("#dragger");
+        _current = fin.desktop.Window.getCurrent();
+       // _current.defineDraggableArea(_dragArea);
+
+
 }
 
 function initDomEventListeners(){
@@ -72,12 +71,13 @@ function initDragEventListener(){
         e.target.classList.remove('mouseover');
 
     });
+    /*
     _dragArea.addEventListener('mousemove', function(e){
         console.log("MOUSE MOVE --- ");
         e.target.classList.remove('mouseleave');
         e.target.classList.add('mouseover');
-
     });
+    */
 }
 /*
 There needs to be an onSuccess callback when a window is created.

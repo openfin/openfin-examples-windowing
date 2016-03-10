@@ -1,12 +1,27 @@
+
+html{
+    overflow: hidden;
+    height: 100%;
+}
+
 body{
-    font-family: sans-serif;
+    background-color: #24282d;
+    font-family: 'Roboto', sans-serif;
     font-size: 11px;
+}
+
+h1{
+    font-weight: 100;
+    color: #0095dd;
+    font-size: 36px;
+    -webkit-margin-before:0;
 }
 
 #dragger{
     width:100%;
     height:60px;
     background-color:#454545 ;
+    -webkit-app-region: drag;
 }
 .listened{
     display: block;
@@ -30,7 +45,7 @@ body{
     position: absolute;
     top: 72px;
     left:225px;
-    background-color: #e6e6e6;
+    color: #e6e6e6;
     padding: 8px;
 }
 .fixed-pos{
@@ -39,7 +54,7 @@ body{
     left: 10px;
 }
 .fixed-pos-container{
-    background-color: #252525;
+    background-color: #dd1b44;
     position: absolute;
     top:10px;
     right: 10px;
@@ -61,5 +76,19 @@ pre{
 
 p, pre{
     line-height: 16px;
+}
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+#nested-box{
+    position: absolute;
+    left: 520px;
 }
