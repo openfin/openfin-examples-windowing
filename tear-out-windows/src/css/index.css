@@ -1,8 +1,16 @@
 body{
     background-color: #24282d;
-    font-family: Helvetica Neue, Helvetica, Arial;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
     color: #afafaf;
     font-size: 12px;
+}
+
+h1{
+    font-weight: 100;
+    color: #0095dd;
+    font-size: 36px;
+    -webkit-margin-before:0;
 }
 
 .content{

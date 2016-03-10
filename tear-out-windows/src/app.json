@@ -1,12 +1,25 @@
 {
   "devtools_port": 9090,
   "startup_app": {
-    "name": "OpenFin appseed",
-    "description": "A vanilla appseed for OpenFin applications",
+    "name": "OpenFin tear-out windows",
+    "description": "An example of tear-out windows in OpenFin,",
     "url": "http://localhost:9066",
     "uuid": "openfin-closing-events-demo",
     "autoShow": true,
-    "frameConnect": "main-window"
+    "frameConnect": "main-window",
+    "autoShow": true,
+    "defaultWidth": 800,
+    "maxWidth": 800,
+    "minWidth": 800,
+
+    "maxHeight": 500,
+    "defaultHeight": 500,
+    "minHeight": 500,
+
+    "defaultTop": 50,
+    "defaultLeft": 50,
+    "resizable": false,
+    "maximizable": false
   },
   "runtime": {
     "arguments": "",
@@ -14,7 +27,7 @@
   },
   "shortcut": {
     "company": "OpenFin",
-    "description": "OpenFin appseed",
-    "name": "OpenFin appseed"
+    "description": "OpenFin tear out windows",
+    "name": "OpenFin Tear Out Windows"
   }
 }
