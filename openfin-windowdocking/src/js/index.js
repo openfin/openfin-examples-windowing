@@ -35,9 +35,12 @@ function initWithOpenFin(){
         _childWindows = values;
         _dockButton = document.querySelector("#dockButton");
         _dockButton.addEventListener('click', function(){
+            _closeAllButton.classList.remove('hidden');
+            _dockButton.classList.add('hidden');
+
             _dockingEnabled ? removeArrayFromDockingWindows(_childWindows) :  addArrayToDockingWindows(_childWindows);
-        })
-        _closeAllButton = document.querySelector("#closeAll")
+        });
+        _closeAllButton = document.querySelector("#closeAll");
         _closeAllButton.addEventListener('click', function(e){
             dockingManager.minimizeAll();
         })
@@ -55,7 +58,7 @@ function addArrayToDockingWindows(array){
         dockingManager.register(d, true);
     });
     _dockingEnabled = true;
-    _dockButton.innerHTML = "disable docking "
+    _dockButton.innerHTML = "disable docking ";
 }
 
 function removeArrayFromDockingWindows(array){
@@ -64,20 +67,17 @@ function removeArrayFromDockingWindows(array){
         dockingManager.unregister(d);
     });
     _dockingEnabled = false;
-    _dockButton.innerHTML = "enable docking "
+    _dockButton.innerHTML = "enable docking ";
 }
 
 
 var _generateRandomName = function(){
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
     for( var i=0; i < 15; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return text;
 };
-
 
 /*
     This is the code fro creating a very simple docked window.
@@ -85,20 +85,29 @@ var _generateRandomName = function(){
 function createDockedWindow(){
     var _name =  _generateRandomName(),
         _content = document.createElement('div');
-        _content.innerHTML = "<h3>"+_name+"</h3>";
+        _content.innerHTML = "<h4>"+_name+"</h4>";
     return new Promise(function(resolve, reject){
         var child = new fin.desktop.Window({
             name:_name,
             defaultWidth: 266,
-            defaultHeight: 127,
+            defaultHeight: 200,
             defaultTop: (Math.random() * 800),
             defaultLeft: (Math.random() * 800),
             showTaskbarIcon: true
         }, function () {
             // gets the HTML window of the child
             // dockingManager.register(child, true);
+
             var wnd = child.getNativeWindow();
+
+            var fxPanelStylesheet = document.createElement("link");
+            fxPanelStylesheet.rel = "stylesheet";
+            fxPanelStylesheet.type = "text/css";
+            fxPanelStylesheet.href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css";
+            wnd.document.body.appendChild(fxPanelStylesheet);
+
             wnd.document.body.appendChild(_content);
+
             child.show();
             resolve(child);
         });

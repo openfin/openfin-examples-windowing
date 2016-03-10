@@ -1,0 +1,14 @@
+body{
+    background-color: #24282d;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    color: #ffffff;
+}
+h1{
+    font-weight: 100;
+    color: #0095dd;
+}
+
+.hidden{
+    display: none;
+}

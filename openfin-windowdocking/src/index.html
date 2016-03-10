@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<h1>Hello from OpenFin</h1>
-<button id="closeAll">close all windows</button><br />
-<button id="dockButton">start window docking</button>
+<div class="container">
+<h1>OpenFin window docking</h1>
+
+    <input id="dockButton" class = "btn btn-default" type="button" value="start window docking">
+    <input id="closeAll" class = "btn btn-default hidden" type="button" value="close all windows">
+<p></p>
+<p>Click the 'enable docking' button to enable the window docking</p>
+</div>
 </body>
 </html>
 <script src="js/DockingManager.js"></script>

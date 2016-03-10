@@ -618,7 +618,7 @@ var DockingManager = (function() {
     };
 
     DockingManager.prototype.minimizeAll = function() {
-
+        console.log("minimizeAll - CALLED")
         if (minimized) {
             return;
         }
