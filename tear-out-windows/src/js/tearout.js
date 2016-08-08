@@ -128,6 +128,7 @@ function onDrop(e) {
      */
     onMouseInsideOfWindow.call(this, e);
     e.stopPropagation(); // Stops some browsers from redirecting.
+    e.stopPropagation(); // Stops some browsapers from redirecting.
     e.preventDefault();
 }
 //What to do if the mouse is dragged outside of the main window...
