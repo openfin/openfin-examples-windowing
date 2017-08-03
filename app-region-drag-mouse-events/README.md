@@ -1,10 +1,5 @@
-# OpenFin example: draggable elements
-The purpose of this demonstration is to show how mouse Events are captured by draggable areas and possibly strategies for tackling the issue - particularly mouseLeave.
-
-'-webkit-app-region: drag' will prevent standard mouseEvents (see [https://developer.chrome.com/apps/app_window](https://developer.chrome.com/apps/app_window) ).
-A DOM element nested inside a DOM element where the outer DOM element's  css set to '-webkit-app-region: drag' will no longer receive mouse Events. Nesting the inner DOM element inside a further DOM element set to '-webkit-app-region: no-drag' and creating a buffer via padding will allow the innermost Dom element to once again receive mouseEvents, including 'mouseout/mouseleave'.
-
--
+# OpenFin example: Draggable Elements & Mouse Events
+The purpose of this demonstration is to show to create draggable areas by setting the CSS property of '-webkit-app-region: drag;'.
 
 This is a vanilla JavaScript app free from frameworks and build systems, though you may add them as you see fit.
 
@@ -23,7 +18,7 @@ Navigate to the root folder where 'server.js' resides in your command line tool 
 $ node server
 ```
 
-This should start a simple Node server at [http://localhost:9070](http://localhost:9070), then, click the link below to install as an openFin app.
+This should start a simple Node server at [http://localhost:9070](http://localhost:9070), then, click the link below to install as an OpenFin app.
 
 If you wish to change to localhost port you will need to change the references in "server.js", "app.json" and in the installer link below.
 
