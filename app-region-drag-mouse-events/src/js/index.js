@@ -97,7 +97,7 @@ initExternalWindow = function(){
         autoShow: true,
         frame: false
     }, function(){
-        console.log('Child window created: ', this.contentWindow.document)
+        console.log('Child window created: ', this)
     });
 
 };
