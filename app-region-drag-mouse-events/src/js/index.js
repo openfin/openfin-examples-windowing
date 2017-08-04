@@ -16,13 +16,12 @@ function init(){
 };
 
 function initWithOpenFin(){
-    initDomEventListeners();
-   // initDragEventListener();
-    //initExternalWindow();
-        _dragArea = document.querySelector("#dragger");
-        _current = fin.desktop.Window.getCurrent();
-       // _current.defineDraggableArea(_dragArea);
+    _dragArea = document.querySelector("#dragger");
+    _current = fin.desktop.Window.getCurrent();
 
+    initDomEventListeners();
+    initExternalWindow();
+    initDragEventListener();
 
 }
 
@@ -30,24 +29,27 @@ function initDomEventListeners(){
     document.querySelector("#closer").addEventListener('click', function(){
         _current.close()
     });
-[].slice.call(document.querySelectorAll(".listened")).map(function(d,i){
-    d.addEventListener('mouseover', function(e){
-        console.log("MOUSE OVER --- ")
-        e.target.classList.remove('mouseleave');
-        e.target.classList.add('mouseover');
+
+    [].slice.call(document.querySelectorAll(".listened")).map(function(d,i){
+        d.addEventListener('mouseover', function(e){
+            console.log("MOUSE OVER --- ")
+            e.target.classList.remove('mouseleave');
+            e.target.classList.add('mouseover');
+        });
+
+        d.addEventListener('mouseout', function(e){
+            console.log("MOUSE OUT --- ")
+            e.target.classList.remove('mouseleave');
+            e.target.classList.add('mouseover');
+        });
+
+        d.addEventListener('mouseleave', function(e){
+            console.log("MOUSE LEAVE --- ")
+            e.target.classList.add('mouseleave');
+            e.target.classList.remove('mouseover');
+        });
 
     });
-    d.addEventListener('mouseout', function(e){
-        console.log("MOUSE OUT --- ")
-        e.target.classList.remove('mouseleave');
-        e.target.classList.add('mouseover');
-    });
-    d.addEventListener('mouseleave', function(e){
-        console.log("MOUSE LEAVE --- ")
-        e.target.classList.add('mouseleave');
-        e.target.classList.remove('mouseover');
-    });
-});
 }
 /*
  initDragEventListener will have no effect on the drag bar, as it is defined as a draggable area, and is there for illustration only.
@@ -57,31 +59,30 @@ function initDragEventListener(){
         console.log("MOUSE OVER --- ");
         e.target.classList.remove('mouseleave');
         e.target.classList.add('mouseover');
-
     });
+
     _dragArea.addEventListener('mouseout', function(e){
         console.log("MOUSE OUT --- ");
         e.target.classList.add('mouseleave');
         e.target.classList.remove('mouseover');
-
     });
+
     _dragArea.addEventListener('mouseleave', function(e){
         console.log("MOUSE LEAVE --- ");
         e.target.classList.add('mouseleave');
         e.target.classList.remove('mouseover');
-
     });
-    /*
+
     _dragArea.addEventListener('mousemove', function(e){
         console.log("MOUSE MOVE --- ");
         e.target.classList.remove('mouseleave');
         e.target.classList.add('mouseover');
     });
-    */
+
 }
 /*
 There needs to be an onSuccess callback when a window is created.
-Within the callback you can execute any code specific to the created window which may be accesed via 'this'.
+Within the callback you can execute any code specific to the created window which may be accessed via 'this'.
 
 To obtain the DOM of that window use 'this.contentWindow.document'.
 */
@@ -96,10 +97,7 @@ initExternalWindow = function(){
         autoShow: true,
         frame: false
     }, function(){
-        //obtain the toolbar DOM element.
-        toolbar = this.contentWindow.document.getElementById('toolbar')
-        //call defineDraggableArea method with the toolbar.
-        this.defineDraggableArea(toolbar);
+        console.log('Child window created: ', this)
     });
 
 };

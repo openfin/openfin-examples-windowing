@@ -28,7 +28,7 @@ h1{
     width: 200px;
     height: 30px;
     padding: 4px;
-    margin: 4px;
+    margin: 12px 4px;
     background-color: #ff9e24;
     -webkit-app-region: no-drag !important;
 }
@@ -39,6 +39,13 @@ h1{
 
 #closer{
    width:180px !important;
+   position: absolute;
+   top:5px;
+   right: 10px;
+   bottom: 10px;
+   height: 32px;
+   line-height: 16px;
+   -webkit-app-region: no-drag !important;
 }
 #copy{
     width:550px;
@@ -53,16 +60,6 @@ h1{
     top:30px;
     left: 10px;
 }
-.fixed-pos-container{
-    background-color: #dd1b44;
-    position: absolute;
-    top:10px;
-    right: 10px;
-    height: 46px;
-    line-height: 16px;
-    -webkit-app-region: no-drag !important;
-}
-
 .mouseleave{
     background-color: #7ffaff;
 }
@@ -88,7 +85,3 @@ p, pre{
                                   not supported by any browser */
 }
 
-#nested-box{
-    position: absolute;
-    left: 520px;
-}

@@ -1,41 +1,38 @@
 {
-  "devtools_port": 9090,
-  "startup_app": {
-    "name": "OpenFin 1819 Define Draggable",
-    "description": "Define draggable event listener issues",
-    "url": "http://localhost:9070",
-    "uuid": "openfin-define-draggable-demo",
-    "autoShow": true,
-    "defaultWidth": 1000,
-    "maxWidth": 1000,
-    "minWidth": 1000,
-
-    "maxHeight": 900,
-    "defaultHeight": 900,
-    "minHeight": 900,
-
-    "defaultTop": 50,
-    "defaultLeft": 50,
-    "resizable": false,
-    "maximizable": false,
-    "frame": false
-
-  },
-  "runtime": {
-    "arguments": "",
-    "version": "stable"
-  },
-  "shortcut": {
-    "company": "OpenFin",
-    "description": "OpenFin Define Draggable",
-    "name": "OpenFin Define Draggable"
-  },
-  "dialogSettings" : {
-    "logo" : "https://openfin.co/wp-content/uploads/2014/11/logo.png",
-    "bgColor" : 4163183909,
-    "textColor" : 4293980400,
-    "progressBarBgColor" : 4278190080,
-    "progressBarFillColor" : 4281513430,
-    "progressBarBorderColor" : 4282137660
-  }
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "OpenFin 1819 Define Draggable",
+        "description": "Define draggable event listener issues",
+        "url": "http://localhost:9070",
+        "uuid": "openfin-define-draggable-demo",
+        "autoShow": true,
+        "defaultWidth": 1000,
+        "maxWidth": 1000,
+        "minWidth": 1000,
+        "maxHeight": 900,
+        "defaultHeight": 900,
+        "minHeight": 900,
+        "defaultTop": 50,
+        "defaultLeft": 50,
+        "resizable": false,
+        "maximizable": false,
+        "frame": false
+    },
+    "runtime": {
+        "arguments": "",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "OpenFin Define Draggable",
+        "name": "OpenFin Define Draggable"
+    },
+    "dialogSettings": {
+        "logo": "https://openfin.co/wp-content/uploads/2014/11/logo.png",
+        "bgColor": 4163183909,
+        "textColor": 4293980400,
+        "progressBarBgColor": 4278190080,
+        "progressBarFillColor": 4281513430,
+        "progressBarBorderColor": 4282137660
+    }
 }
