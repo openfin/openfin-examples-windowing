@@ -1,3 +1,5 @@
+This example has become outdated.  Please see a more up to date example [here.](https://github.com/openfin/tearout-demo)
+
 # OpenFin example: Tear-out windows
 
 The illusion of being able to tear an element out of a window onto the desktop is acheived by reparenting the DOM elements to an external app window. In this demo the external windows are pre created and each draggable element has a hidden window awaiting it being dragged from the main window. 
