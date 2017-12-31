@@ -14,11 +14,7 @@ NB: on a Mac you may need to type 'sudo npm install'
 Navigate to the root folder where 'server.js' resides with your command line tool and run:
 
 ```
-$ node server
+$ npm start
 ```
 
-This should start a simple Node server at [http://localhost:9070](http://localhost:9060), then, click the link below to install as an openFin app.
-
-If you wish to change to localhost port you will need to change the references in "server.js", "app.json" and in the installer link below.
-
-[installer](https://dl.openfin.co/services/download?fileName=openfin-window-docking-demo&config=http://localhost:9077/app.json)
+This should start a simple Node server at [http://localhost:9070](http://localhost:9060), then, launch the app via the node [OpenFin Launcher](https://wwww.npmjs.org/package/openfin-launcher)
