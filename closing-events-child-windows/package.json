@@ -4,8 +4,8 @@
   "description": "Testing MP3 integration of OpenFin apps",
   "main": "index.js",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start" :  "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "OpenFin"
@@ -13,6 +13,7 @@
   "author": "Graham Clapham",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "openfin-launcher": "^1.4.2"
   }
 }
